@@ -1,0 +1,27 @@
+.logo {
+  display: flex;
+  padding: 1em 0em 1em 0em;
+  justify-content: center;
+
+  img {
+    width: 10%;
+    height: auto;
+  }
+}
+
+.navbar {
+  display: flex;
+  background-color: lightblue;
+  padding: 1em 0em 1em 0em;
+}
+
+.navbar__link {
+  margin: 1em;
+}
+
+.footer {
+  display: flex;
+  background-color: lightblue;
+  padding: 1em 0em 1em 0em;
+  justify-content: center;
+}
