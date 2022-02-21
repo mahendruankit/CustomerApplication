@@ -1,19 +1,72 @@
-Customer Code : <input [(ngModel)]="CustomerModel.CustomerCode" type="text" />
-<br />
-Customer Name : <input type="text" [(ngModel)]="CustomerModel.CustomerName" />
-<br />
-Customer Amount :
-<input type="text" [(ngModel)]="CustomerModel.CustomerAmount" />
+<form class="customerComponent" [formGroup]="CustomerModel.formCustomerGroup">
+  Customer Code :
+  <input
+    formControlName="CustomerCodeControl"
+    [(ngModel)]="CustomerModel.CustomerCode"
+    type="text"
+  />
+  <br />
+  Customer Name :
+  <input
+    formControlName="CustomerNameControl"
+    type="text"
+    [(ngModel)]="CustomerModel.CustomerName"
+  />
+  <br />
+  Customer Amount :
+  <input
+    type="text"
+    [(ngModel)]="CustomerModel.CustomerAmount"
+    [ngModelOptions]="{standalone: true}"
+  />
+  <br />
+  <input
+    [disabled]="!(CustomerModel.formCustomerGroup.valid)"
+    type="button"
+    value="Add"
+    (click)="Add()"
+  />
+  <br />
+  <div
+    *ngIf="CustomerModel.
+  formCustomerGroup.dirty"
+    [hidden]="!(CustomerModel.
+  formCustomerGroup.
+  controls['CustomerCodeControl']
+  .hasError('pattern'))"
+  >
+    Customer code format is incorrect
+  </div>
+  <div
+    *ngIf="CustomerModel.
+  formCustomerGroup.dirty"
+    [hidden]="!(CustomerModel.
+  formCustomerGroup.
+  controls['CustomerCodeControl']
+  .hasError('required'))"
+  >
+    Customer code is required
+  </div>
+  <div
+    [hidden]="!(CustomerModel.
+  formCustomerGroup.
+  controls['CustomerNameControl']
+  .hasError('required'))"
+  >
+    Customer name is required
+  </div>
 
-<input type="button" value="Add" (click)="Add()" />
+  <br />
+  {{CustomerModel.CustomerCode}}
+  <br />
+  {{CustomerModel.CustomerName}}
+  <br />
+  {{CustomerModel.CustomerAmount}}
+</form>
+<br />
 
-<table>
-  <th>Customer Code</th>
-  <th>Customer Name</th>
-  <th>Customer Amount</th>
-  <tr *ngFor="let cust of CustomerModels">
-    <td>{{cust.CustomerCode}}</td>
-    <td>{{cust.CustomerName}}</td>
-    <td>{{cust.CustomerAmount}}</td>
-  </tr>
-</table>
+<grid-ui
+  [grid-columns]="[{'colName': 'CustomerCode'}, {'colName': 'CustomerName'}, {'colName': 'CustomerAmount'}]"
+  [grid-data]="CustomerModels"
+  (grid-selected)="selectCustomer($event)"
+></grid-ui>
