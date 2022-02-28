@@ -1,0 +1,17 @@
+.uiTable {
+  display: flex;
+  flex-direction: column;
+
+  tr {
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.uiTableHeaderData {
+  padding-right: 1em;
+}
+
+.uiTableData {
+  padding-right: 5em;
+}

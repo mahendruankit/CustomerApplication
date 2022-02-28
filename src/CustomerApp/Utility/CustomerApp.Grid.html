@@ -1,9 +1,11 @@
-<table>
-  <tr>
-    <td *ngFor="let col of gridColumns">{{col.colName}}</td>
+<table class="uiTable">
+  <tr class="uiTableHeader">
+    <td class="uiTableHeaderData" *ngFor="let col of gridColumns">
+      {{col.colName}}
+    </td>
   </tr>
   <tr *ngFor="let colObj of gridData">
-    <td *ngFor="let col of gridColumns">{{colObj[col.colName]}}</td>
+    <td class="uiTableData" *ngFor="let col of gridColumns">{{colObj[col.colName]}}</td>
     <td>
       <a (click)="selectGrid(colObj)" routerLink="/Customer/Add">select</a>
     </td>

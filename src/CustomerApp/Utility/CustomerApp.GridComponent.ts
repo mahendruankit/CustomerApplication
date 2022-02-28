@@ -2,6 +2,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'grid-ui',
   templateUrl: './CustomerApp.Grid.html',
+  styleUrls: ['./CustomerApp.GridComponent.scss'],
 })
 export class GridComponent {
   gridColumns: Array<any> = new Array<any>();

@@ -5,28 +5,24 @@
     [(ngModel)]="CustomerModel.CustomerCode"
     type="text"
   />
-  <br />
   Customer Name :
   <input
     formControlName="CustomerNameControl"
     type="text"
     [(ngModel)]="CustomerModel.CustomerName"
   />
-  <br />
   Customer Amount :
   <input
     type="text"
     [(ngModel)]="CustomerModel.CustomerAmount"
     [ngModelOptions]="{standalone: true}"
   />
-  <br />
   <input
     [disabled]="!(CustomerModel.formCustomerGroup.valid)"
     type="button"
     value="Add"
     (click)="Add()"
   />
-  <br />
   <div
     *ngIf="CustomerModel.
   formCustomerGroup.dirty"
@@ -48,6 +44,8 @@
     Customer code is required
   </div>
   <div
+    *ngIf="CustomerModel.
+  formCustomerGroup.dirty"
     [hidden]="!(CustomerModel.
   formCustomerGroup.
   controls['CustomerNameControl']
@@ -55,13 +53,6 @@
   >
     Customer name is required
   </div>
-
-  <br />
-  {{CustomerModel.CustomerCode}}
-  <br />
-  {{CustomerModel.CustomerName}}
-  <br />
-  {{CustomerModel.CustomerAmount}}
 </form>
 <br />
 
